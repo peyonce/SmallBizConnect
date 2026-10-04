@@ -1,5 +1,3 @@
-"""Business logic and data for SmallBizConnect."""
-
 import csv
 import json
 import os
@@ -17,9 +15,7 @@ class BusinessData:
         self.transactions = []
         self.load()
 
-    # ------------------------------------------------------------------
-    # Actions
-    # ------------------------------------------------------------------
+     
     def add_sale(self, amount):
         if amount <= 0:
             raise ValueError("Sale amount must be greater than zero.")
@@ -54,9 +50,9 @@ class BusinessData:
 
         with open(path, "w", newline="") as f:
             writer = csv.writer(f)
-            # Header row
+             
             writer.writerow(["id", "date", "time", "type", "amount"])
-            # One row per transaction, oldest first (so it reads like a ledger)
+            
             for t in sorted(
                 self.transactions,
                 key=lambda t: (t.get("date", ""), t.get("time", ""), t.get("id", 0)),
@@ -70,10 +66,7 @@ class BusinessData:
                 ])
 
         return path
-
-    # ------------------------------------------------------------------
-    # Totals — today only
-    # ------------------------------------------------------------------
+ 
     @property
     def today_sales(self):
         today = date.today().isoformat()
@@ -94,9 +87,7 @@ class BusinessData:
     def profit(self):
         return self.today_sales - self.today_expenses
 
-    # ------------------------------------------------------------------
-    # Grouping for display
-    # ------------------------------------------------------------------
+    
     def get_grouped_by_date(self):
         buckets = {}
         for t in self.transactions:
@@ -126,9 +117,7 @@ class BusinessData:
 
         return result
 
-    # ------------------------------------------------------------------
-    # Private helpers
-    # ------------------------------------------------------------------
+    
     def _add_transaction(self, kind, amount):
         now = datetime.now()
         next_id = max((t.get("id", 0) for t in self.transactions), default=0) + 1
@@ -143,9 +132,7 @@ class BusinessData:
         self.transactions.append(record)
         self.save()
 
-    # ------------------------------------------------------------------
-    # Persistence
-    # ------------------------------------------------------------------
+     
     def save(self):
         with open(DATA_FILE, "w") as f:
             json.dump(self.transactions, f, indent=2)
