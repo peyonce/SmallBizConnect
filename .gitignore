@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+
+# App-generated data
+business_data.json
+transactions.csv
+
+# Kivy logs
+.kivy/
+
+# Editor
+.vscode/
+.idea/
+*.swp
