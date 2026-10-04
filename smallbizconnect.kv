@@ -1,0 +1,227 @@
+#:import dp kivy.metrics.dp
+
+<FlatButton@Button>:
+    background_normal: ""
+    color: 1, 1, 1, 1
+    font_name: "Poppins"
+    font_size: dp(16)
+    size_hint_y: None
+    height: dp(52)
+
+<Card@BoxLayout>:
+    orientation: "vertical"
+    size_hint_y: None
+    height: dp(90)
+    padding: dp(12)
+    spacing: dp(4)
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<WelcomeScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.96, 0.97, 0.99, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(40)
+        spacing: dp(20)
+
+        Widget:
+        Image:
+            source: "assets/logo.png"
+            size_hint: None, None
+            size: dp(120), dp(120)
+            pos_hint: {"center_x": 0.5}
+        Label:
+            text: "SmallBizConnect"
+            font_name: "Poppins"
+            font_size: dp(32)
+            bold: True
+            color: 0.20, 0.45, 0.85, 1
+            size_hint_y: None
+            height: dp(60)
+        Label:
+            text: "Manage your business with confidence"
+            font_name: "Poppins"
+            font_size: dp(16)
+            color: 0.45, 0.45, 0.50, 1
+            size_hint_y: None
+            height: dp(40)
+        Widget:
+        FlatButton:
+            text: "Get Started"
+            background_color: 0.20, 0.45, 0.85, 1
+            on_release: root.go_to_dashboard()
+        Widget:
+
+
+<DashboardScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.96, 0.97, 0.99, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ScrollView:
+        do_scroll_x: False
+        BoxLayout:
+            orientation: "vertical"
+            padding: dp(20)
+            spacing: dp(12)
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "SmallBizConnect"
+                font_size: dp(24)
+                bold: True
+                color: 0.20, 0.45, 0.85, 1
+                size_hint_y: None
+                height: dp(45)
+
+            Label:
+                text: "Welcome back!"
+                font_size: dp(16)
+                color: 0.45, 0.45, 0.50, 1
+                size_hint_y: None
+                height: dp(25)
+
+            Card:
+                Label:
+                    text: "Sales (Today)"
+                    font_size: dp(16)
+                    color: 0.45, 0.45, 0.50, 1
+                    halign: "left"
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(22)
+                Label:
+                    id: sales_value
+                    text: "R0.00"
+                    font_size: dp(20)
+                    bold: True
+                    color: 0.20, 0.60, 0.30, 1
+                    halign: "left"
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(36)
+
+            Card:
+                Label:
+                    text: "Expenses (Today)"
+                    font_size: dp(16)
+                    color: 0.45, 0.45, 0.50, 1
+                    halign: "left"
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(22)
+                Label:
+                    id: expenses_value
+                    text: "R0.00"
+                    font_size: dp(20)
+                    bold: True
+                    color: 0.80, 0.30, 0.30, 1
+                    halign: "left"
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(36)
+
+            Card:
+                Label:
+                    text: "Profit (Today)"
+                    font_size: dp(16)
+                    color: 0.45, 0.45, 0.50, 1
+                    halign: "left"
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(22)
+                Label:
+                    id: profit_value
+                    text: "R0.00"
+                    font_size: dp(20)
+                    bold: True
+                    color: 0.20, 0.45, 0.85, 1
+                    halign: "left"
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(36)
+
+            TextInput:
+                id: amount_input
+                hint_text: "Enter amount (e.g. 50)"
+                input_filter: "float"
+                multiline: False
+                font_size: dp(16)
+                padding: dp(12), dp(12)
+                size_hint_y: None
+                height: dp(48)
+
+            FlatButton:
+                text: "Add Sale"
+                background_color: 0.20, 0.60, 0.30, 1
+                on_release: root.handle_add_sale()
+
+            FlatButton:
+                text: "Add Expense"
+                background_color: 0.80, 0.30, 0.30, 1
+                on_release: root.handle_add_expense()
+
+            FlatButton:
+                text: "View History"
+                background_color: 0.20, 0.45, 0.85, 1
+                on_release: root.handle_view_history()
+
+            FlatButton:
+                text: "Clear All History"
+                background_color: 0.80, 0.30, 0.30, 1
+                on_release: root.handle_reset_day()
+
+
+<HistoryScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.96, 0.97, 0.99, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(12)
+
+        Label:
+            text: "Transaction History"
+            font_size: dp(24)
+            bold: True
+            color: 0.20, 0.45, 0.85, 1
+            size_hint_y: None
+            height: dp(45)
+
+        ScrollView:
+            GridLayout:
+                id: list_layout
+                cols: 1
+                spacing: dp(6)
+                size_hint_y: None
+                height: self.minimum_height
+
+        FlatButton:
+            text: "Export to CSV"
+            background_color: 0.20, 0.60, 0.30, 1
+            on_release: root.handle_export()
+
+        FlatButton:
+            text: "Back to Dashboard"
+            background_color: 0.20, 0.45, 0.85, 1
+            on_release: root.go_back()
