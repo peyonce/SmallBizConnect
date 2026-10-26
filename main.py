@@ -12,8 +12,7 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.core.text import LabelBase
 
 from data import BusinessData
-from screen import WelcomeScreen, DashboardScreen, HistoryScreen
-
+from screen import WelcomeScreen, DashboardScreen, HistoryScreen, ToolsScreen
 
 LabelBase.register(
     name="Poppins",
@@ -21,10 +20,7 @@ LabelBase.register(
     fn_bold=os.path.join(ASSETS, "Poppins-Bold.ttf"),
 )
 
-
 class SmallBizConnectApp(App):
-    """Creates a shared BusinessData object and wires up all screens."""
-
     def build(self):
         self.title = "SmallBizConnect"
 
@@ -34,10 +30,10 @@ class SmallBizConnectApp(App):
         manager.add_widget(WelcomeScreen(name="welcome"))
         manager.add_widget(DashboardScreen(name="dashboard"))
         manager.add_widget(HistoryScreen(name="history"))
+        manager.add_widget(ToolsScreen(name="tools"))
 
         manager.current = "welcome"
         return manager
-
 
 if __name__ == "__main__":
     SmallBizConnectApp().run()
