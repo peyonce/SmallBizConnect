@@ -1,20 +1,28 @@
-# SmallBizConnect
+ SmallBizConnect
 
-A small-business tracker built with Python + Kivy.
-Log sales and expenses, see today's totals, review your history,
-and export everything to a spreadsheet.
+A small-business tracker built with Python + Kivy. Designed for young founders and township businesses to log sales, track expenses, manage cash flow, and reach formal markets.
 
+[SmallBizConnect logo](assets/logo.png)
+ 
 
-## Features
+SmallBizConnect directly addresses the "Youth entrepreneurship and small-business growth" problem statement. We cover multiple focus areas required by the brief:
 
-- **Dashboard** — today's sales, expenses, and profit at a glance
-- **Add transactions** — record sales and expenses with one tap
-- **Input validation** — friendly popups when you enter bad data
-- **Transaction history** — every record grouped by Today / Yesterday / date
-- **Delete with confirmation** — mistakes are safe to fix
-- **Export to CSV** — open in Excel, Google Sheets, or Numbers
-- **Persistent storage** — your data survives app restarts (JSON)
-- **Custom branding** — Poppins font, custom logo
+- **Bookkeeping:** Track daily sales/expenses, see live profit, and export a full transaction history to CSV.
+- **Business Registration:** Built-in "Business Tools" screen links directly to CIPC to help young founders formalize their business.
+- **Funding Readiness:** Generate a clean CSV bank report that can be used to apply for funding, loans, or grants.
+- **Fraud Protection:** Built-in links to SARS scam alerts to help rural businesses avoid digital fraud.
+
+# Features
+
+- **Dashboard:** Today's sales, expenses, and profit at a glance.
+- **Add transactions:** Record sales and expenses with one tap.
+- **Input validation:** Friendly popups when you enter bad data.
+- **Transaction history:** Every record grouped by Today / Yesterday / date.
+- **Delete with confirmation:** Mistakes are safe to fix.
+- **Export to CSV:** Open in Excel, Google Sheets, or Numbers.
+- **Business Growth Tools:** Quick access to registration, funding prep, and fraud protection.
+- **Persistent storage:** Your data survives app restarts (JSON).
+- **Custom branding:** Poppins font, custom logo.
 
 ## Tech Stack
 
@@ -28,32 +36,32 @@ and export everything to a spreadsheet.
 
 ### Install
 
-    pip install kivy Pillow
+```bash
+pip install kivy Pillow
+python3 main.py
 
-### Run
+Usage
+Tap Get Started on the welcome screen.
 
-    python3 main.py
+Enter an amount and tap Add Sale or Add Expense.
 
-## Usage
+Tap View History to see all records grouped by day.
 
-1. Tap **Get Started** on the welcome screen
-2. Enter an amount and tap **Add Sale** or **Add Expense**
-3. Tap **View History** to see all records grouped by day
-4. Tap the red **X** on any row to delete it (with confirmation)
-5. Tap **Export to CSV** to write everything to transactions.csv
+Tap the red X on any row to delete it (with confirmation).
 
-## Roadmap
+Tap Export to CSV to write everything to transactions.csv.
 
-- [ ] Edit an existing transaction
-- [ ] Monthly summary screen
-- [ ] Search / filter history
-- [ ] Charts of daily profit
-- [ ] Android build (.apk)
+Tap Business Tools to access registration, funding, and fraud resources.
 
-## License
-
+Roadmap
+☑ Bookkeeping (Sales, Expenses, Profit)
+☑ CSV Export (Funding Readiness)
+☑ Business Tools Screen (Registration & Fraud Links)
+□ Android build (.apk) for mobile access
+□ Cloud sync for multiple devices
+License
 MIT — free to use, modify, and share.
 
-## Author
-
+Author
 Built by Nthabiseng Phiri.
+ 
